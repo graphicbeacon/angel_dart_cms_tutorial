@@ -1,0 +1,18 @@
+name: simple_blog_cms
+description: A sample command-line application.
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  path: ^1.6.0
+  angel_framework: ^2.1.0
+  angel_jael: ^2.0.0
+  angel_static: ^2.0.0
+
+dev_dependencies:
+  pedantic: ^1.8.0
+  test: ^1.6.0
+  angel_hot: ^2.0.0
