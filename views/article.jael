@@ -1,0 +1,13 @@
+<extend src="layout.jael">
+  <block name="content">
+    <div class="container my-5">
+      <div class="row justify-content-md-center">
+        <div class="col-md-8">
+          <h1>{{ article.title }}</h1>
+          <p class="lead">Posted on {{ article.fullDate }}</p>
+          {{- article.contentAsHtml }}
+        </div>
+      </div>
+    </div>
+  </block>
+</extend>

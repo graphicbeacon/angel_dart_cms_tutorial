@@ -1,5 +1,5 @@
 name: simple_blog_cms
-description: A sample command-line application.
+description: A blogging cms written with the Angel Dart Framework.
 # version: 1.0.0
 # homepage: https://www.example.com
 
@@ -11,8 +11,15 @@ dependencies:
   angel_framework: ^2.1.0
   angel_jael: ^2.0.0
   angel_static: ^2.0.0
+  angel_mongo: ^2.0.3
+  mongo_dart: ^0.4.0
+  angel_model: ^1.0.0
+  angel_serialize: ^2.0.0
+  markdown: ^2.1.3
 
 dev_dependencies:
   pedantic: ^1.8.0
   test: ^1.6.0
   angel_hot: ^2.0.0
+  build_runner: ^1.0.0
+  angel_serialize_generator: ^2.0.0

@@ -4,7 +4,7 @@
       <div class="container mb-3">
         <div class="row">
         <div class="col-sm-12 text-center">
-          <h1 class="display-1">My Tech Blog</h1>
+          <h1 class="display-2">The Best Tech Content</h1>
           <p class="lead">
           Your daily source of tutorials, reviews and source material for upcoming tech innovations
           </p>
@@ -15,14 +15,10 @@
 
     <div class="container">
     <div class="row justify-content-sm-center">
-      <div class="col-sm-8 mt-2 mb-4">
-        <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
-        <p><span class="badge badge-info">1 January 2020</span></p>
-        <p><a href="#">Read full article</a></p>
-
-        <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
-        <p><span class="badge badge-info">1 January 2020</span></p>
-        <p><a href="#">Read full article</a></p>
+      <div class="col-sm-8 mt-2 mb-4" for-each=articles as="article">
+        <h2><a href="/posts/" + article.slug>{{ article.title }}</a></h2>
+        <p><span class="badge badge-info">{{ article.fullDate }}</span></p>
+        <p><a href="/posts/" + article.slug>Read full article</a></p>
       </div>
     </div>
     </div>
