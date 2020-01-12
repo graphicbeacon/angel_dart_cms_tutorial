@@ -33,9 +33,12 @@ class _Article extends Model {
     'December'
   ];
 
-  String get fullDate =>
-      '${publishDate.day} ${months[publishDate.month - 1]} ${publishDate.year}';
+  String get fullDate => publishDate != null
+      ? '${publishDate.day} ${months[publishDate.month - 1]} ${publishDate.year}'
+      : null;
   String get publishDateAsInputValue {
+    if (publishDate == null) return '';
+
     var day = publishDate.day;
     var month = publishDate.month;
 

@@ -7,6 +7,12 @@
           <p class="lead">Posted on {{ article.fullDate }}</p>
           {{- article.contentAsHtml }}
         </div>
+        <div class="w-100"></div>
+        <div class="col-md-8">
+          <p class="d-sm-inline-block mr-1">
+            <a href="/posts/" + article.slug + "/edit" class="btn btn-warning btn-sm">Edit this article</a>
+          </p>
+        </div>
       </div>
     </div>
   </block>

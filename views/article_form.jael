@@ -6,9 +6,23 @@
         <div class="alert alert-success" if=created>
           Successfully created. <a href="/posts/" + article.slug>View article</a>
         </div>
+        
+        <div class="alert alert-success" if=edited>
+          Successfully updated. <a href="/posts/" + article.slug>View updated article</a>
+        </div>
+
+        <div class="alert alert-danger" if=errors != null>
+          <h3 class="mb-2">There was a problem saving changes</h3>
+          <ul>
+            <li for-each=errors as="error">{{ error }}</li>
+          </ul>
+        </div>
+
+        <h1 if=editing>Currently editing "{{ article.title }}"</h1>
       </div>
       <div class="col-sm-8 py-3">
-        <form method="post" action="/new" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value=article?.id>  
           <div class="form-group">
             <label for="ArticleTitle">Title</label>
             <input type="text" name="title" class="form-control" id="ArticleTitle" placeholder="Enter the title" 
