@@ -42,7 +42,9 @@
             <label for="ArticleContent">Body</label>
             <textarea name="content" class="form-control" id="ArticleContent" rows="12">{{ article?.content }}</textarea>
           </div>
-          <input type="submit" class="btn btn-success" value="Submit">
+          <input type="submit" class="btn btn-success mr-1" value="Submit">
+          <button if=editing type="submit" class="btn btn-danger" name="_method" value="delete" 
+            onclick="return confirm('Are you sure?')">Delete this article</button>
         </form>
       </div>
     </div>

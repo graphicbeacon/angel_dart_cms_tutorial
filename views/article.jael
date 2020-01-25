@@ -12,6 +12,11 @@
           <p class="d-sm-inline-block mr-1">
             <a href="/posts/" + article.slug + "/edit" class="btn btn-warning btn-sm">Edit this article</a>
           </p>
+          <form action="/posts/" + article.slug + "/edit" method="post" enctype="multipart/form-data" class="d-sm-inline-block">
+            <input type="hidden" name="id" value=article?.id>
+            <button type="submit" class="btn btn-danger btn-sm" name="_method" value="delete"
+              onclick="return confirm('Are you sure?')">Delete this article</button>
+          </form>
         </div>
       </div>
     </div>

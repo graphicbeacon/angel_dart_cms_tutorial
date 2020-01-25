@@ -80,6 +80,15 @@ AngelConfigurer configureServer() => (Angel app) {
       app.post('/posts/:slug/edit', (req, res) async {
         await req.parseBody();
 
+        var articleService = app.findService('articles');
+        var methodOverride = req.bodyAsMap['_method'];
+
+        if (methodOverride is String && methodOverride == 'delete') {
+          await articleService.remove(req.bodyAsMap['id']);
+          await res.redirect('/');
+          return;
+        }
+
         var validationResult = articleValidator.check(req.bodyAsMap);
         var templateData = <String, dynamic>{};
 
@@ -103,7 +112,6 @@ AngelConfigurer configureServer() => (Angel app) {
 
           res.statusCode = HttpStatus.badRequest;
         } else {
-          var articleService = app.findService('articles');
           var article = ArticleSerializer.fromMap(req.bodyAsMap);
 
           article.updatedAt = DateTime.now();

@@ -15,6 +15,10 @@
 
     <div class="container">
     <div class="row justify-content-sm-center">
+      <div class="col-sm-8 mt-2 mb-4" if=articles.length == 0>
+        <p class="lead text-center">No articles added. <a href="/new">Add new</a></p>
+      </div>
+
       <div class="col-sm-8 mt-2 mb-4" for-each=articles as="article">
         <h2><a href="/posts/" + article.slug>{{ article.title }}</a></h2>
         <p><span class="badge badge-info">{{ article.fullDate }}</span></p>
