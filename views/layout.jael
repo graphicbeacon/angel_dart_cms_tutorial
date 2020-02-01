@@ -13,20 +13,40 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">My Tech Blog</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Articles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/new">Add new</a>
-          </li>
+          <switch value=title>
+            <case value="home">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Articles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/new">Add new</a>
+              </li>
+            </case>
+            <case value="new">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Articles</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/new">Add new</a>
+              </li>
+            </case>
+            <default>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Articles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/new">Add new</a>
+              </li>
+            </default>
+          </switch>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="/search" method="get" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="q" value=query type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>

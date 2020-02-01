@@ -13,3 +13,5 @@ var articleValidator = Validator({
   'slug': 'Please enter a valid slug',
   'publish_date': 'Please enter a valid date',
 });
+
+var searchValidator = Validator({'q*': isNonEmptyString});

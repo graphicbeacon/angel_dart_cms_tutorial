@@ -13,10 +13,44 @@ AngelConfigurer configureServer() => (Angel app) {
         var articles = articleList.map((article) {
           return ArticleSerializer.fromMap(article);
         }).toList();
-        await res.render('articles', {'articles': articles});
+        await res.render('articles', {
+          'articles': articles,
+          'title': 'home',
+        });
       });
 
-      app.get('/new', (req, res) => res.render('article_form'));
+      app.get('/search', (req, res) async {
+        var query = req.queryParameters['q'];
+        var articleService = app.findService('articles');
+
+        var validationResult = searchValidator.check(req.queryParameters);
+        var templateData = {};
+
+        if (validationResult.errors.isNotEmpty) {
+          // Handle error
+          templateData
+              .addAll({'errors': validationResult.errors, 'articles': []});
+        } else {
+          var filteredArticleList = await articleService.index(
+              {'query': where.jsQuery('this.title.indexOf("$query") > -1')});
+          var filteredArticles = filteredArticleList.map((article) {
+            return ArticleSerializer.fromMap(article);
+          }).toList();
+
+          templateData['articles'] = filteredArticles;
+        }
+
+        await res.render('search', {
+          'query': query,
+          ...templateData,
+        });
+      });
+
+      app.get(
+          '/new',
+          (req, res) => res.render('article_form', {
+                'title': 'new',
+              }));
 
       app.post('/new', (req, res) async {
         await req.parseBody();
